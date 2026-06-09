@@ -5,6 +5,7 @@ import {
   useCallback,
   useEffect,
   useLayoutEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -24,30 +25,18 @@ const PLATFORM_STYLES = {
 
 const RATINGS = [9.1, 8.7, 8.9, 9.0, 8.5];
 
-const circularOffset = (index, active, length) => {
-  let diff = index - active;
-  while (diff > length / 2) diff -= length;
-  while (diff < -length / 2) diff += length;
-  return diff;
-};
-
 const getCardMetrics = (viewportWidth) => {
-  if (viewportWidth <= 480) {
-    return { cardWidth: 220, gap: 12 };
-  }
-  if (viewportWidth <= 768) {
-    return { cardWidth: 240, gap: 14 };
-  }
-  if (viewportWidth <= 1200) {
-    return { cardWidth: 255, gap: 16 };
-  }
+  if (viewportWidth <= 480) return { cardWidth: 220, gap: 12 };
+  if (viewportWidth <= 768) return { cardWidth: 240, gap: 14 };
+  if (viewportWidth <= 1200) return { cardWidth: 255, gap: 16 };
   return { cardWidth: 268, gap: 18 };
 };
 
 const MovieCard = ({ item, offset, isActive, onSelect, suppressClick }) => {
-  const platform =
-    PLATFORM_STYLES[item.category] || PLATFORM_STYLES.DESIGN;
+  const platform = PLATFORM_STYLES[item.category] || PLATFORM_STYLES.DESIGN;
   const rating = RATINGS[item.id % RATINGS.length];
+
+  const clampedOffset = Math.max(-2, Math.min(2, offset));
 
   const handleClick = () => {
     if (suppressClick || offset === 0) return;
@@ -58,7 +47,7 @@ const MovieCard = ({ item, offset, isActive, onSelect, suppressClick }) => {
     <div className="movie-3d-carousel__slot">
       <article
         className={`movie-3d-card${isActive ? " movie-3d-card--active" : ""}`}
-        data-offset={offset}
+        data-offset={clampedOffset}
         onClick={handleClick}
         onKeyDown={(e) => {
           if ((e.key === "Enter" || e.key === " ") && offset !== 0 && !suppressClick) {
@@ -101,18 +90,31 @@ const MovieCard = ({ item, offset, isActive, onSelect, suppressClick }) => {
 };
 
 const MovieCarousel3D = ({ items, autoplay = true }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const count = items.length;
+
+  // Triple the items: [copy-A | copy-B (real) | copy-C]
+  // We always start in copy-B (index = count).
+  // After every transition we silently snap back to copy-B so
+  // the track can keep moving forward indefinitely.
+  const extendedItems = useMemo(
+    () => [...items, ...items, ...items],
+    [items]
+  );
+
+  const [activeIndex, setActiveIndex] = useState(count);
   const [viewportWidth, setViewportWidth] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [suppressClick, setSuppressClick] = useState(false);
+  // When snapping, we disable the CSS transition for one frame
+  const [isSnapping, setIsSnapping] = useState(false);
 
   const viewportRef = useRef(null);
-  const activeIndexRef = useRef(0);
+  const activeIndexRef = useRef(count);
   const dragStartRef = useRef({ x: 0, moved: false });
-  const transitionRef = useRef(null);
+  const snapTimerRef = useRef(null);
+  const isDraggingRef = useRef(false);
 
-  const count = items.length;
   const { cardWidth, gap } = getCardMetrics(viewportWidth || 1200);
   const stride = cardWidth + gap;
 
@@ -130,17 +132,35 @@ const MovieCarousel3D = ({ items, autoplay = true }) => {
     return () => window.removeEventListener("resize", measure);
   }, [measure]);
 
+  // After each animated transition finishes, silently jump back to the
+  // middle copy if we've drifted into copy-A or copy-C.
+  const scheduleSnap = useCallback(() => {
+    if (snapTimerRef.current) clearTimeout(snapTimerRef.current);
+    snapTimerRef.current = setTimeout(() => {
+      const current = activeIndexRef.current;
+      const needsSnap = current < count || current >= count * 2;
+      if (!needsSnap) return;
+
+      // Disable transition → move index → re-enable transition
+      setIsSnapping(true);
+      setActiveIndex((idx) => {
+        if (idx >= count * 2) return idx - count;
+        if (idx < count) return idx + count;
+        return idx;
+      });
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => setIsSnapping(false))
+      );
+    }, TRANSITION_MS + 16);
+  }, [count]);
+
   const goTo = useCallback(
     (index) => {
       if (count === 0) return;
-      const next = ((index % count) + count) % count;
-      if (next === activeIndexRef.current) return;
-
-      setActiveIndex(next);
-      if (transitionRef.current) clearTimeout(transitionRef.current);
-      transitionRef.current = setTimeout(() => {}, TRANSITION_MS);
+      setActiveIndex(index);
+      scheduleSnap();
     },
-    [count]
+    [count, scheduleSnap]
   );
 
   const goNext = useCallback(() => goTo(activeIndexRef.current + 1), [goTo]);
@@ -149,69 +169,54 @@ const MovieCarousel3D = ({ items, autoplay = true }) => {
   const goNextRef = useRef(goNext);
   goNextRef.current = goNext;
 
-  const isDraggingRef = useRef(false);
-
   useEffect(() => {
     if (!autoplay || count <= 1) return undefined;
-
     const timer = setInterval(() => {
-      if (!isDraggingRef.current) {
-        goNextRef.current();
-      }
+      if (!isDraggingRef.current) goNextRef.current();
     }, AUTOPLAY_MS);
-
     return () => clearInterval(timer);
   }, [autoplay, count]);
 
   useEffect(
     () => () => {
-      if (transitionRef.current) clearTimeout(transitionRef.current);
+      if (snapTimerRef.current) clearTimeout(snapTimerRef.current);
     },
     []
   );
 
+  /* ── Pointer / drag handlers ── */
   const handlePointerDown = (e) => {
     if (count <= 1) return;
     if (e.button !== 0 && e.pointerType === "mouse") return;
-
     isDraggingRef.current = true;
     setIsDragging(true);
     setSuppressClick(false);
     dragStartRef.current = { x: e.clientX, moved: false };
-
     viewportRef.current?.setPointerCapture(e.pointerId);
   };
 
   const handlePointerMove = (e) => {
     if (!isDraggingRef.current) return;
-
     const delta = e.clientX - dragStartRef.current.x;
-    if (Math.abs(delta) > CLICK_GUARD_PX) {
-      dragStartRef.current.moved = true;
-    }
+    if (Math.abs(delta) > CLICK_GUARD_PX) dragStartRef.current.moved = true;
     setDragOffset(delta);
   };
 
   const finishDrag = (e) => {
     if (!isDraggingRef.current) return;
-
     isDraggingRef.current = false;
     setIsDragging(false);
-
     if (viewportRef.current?.hasPointerCapture(e.pointerId)) {
       viewportRef.current.releasePointerCapture(e.pointerId);
     }
-
     const delta = e.clientX - dragStartRef.current.x;
     const threshold = stride * DRAG_THRESHOLD_RATIO;
-
     if (dragStartRef.current.moved) {
       setSuppressClick(true);
       if (delta < -threshold) goNext();
       else if (delta > threshold) goPrev();
       setTimeout(() => setSuppressClick(false), 50);
     }
-
     setDragOffset(0);
   };
 
@@ -226,6 +231,9 @@ const MovieCarousel3D = ({ items, autoplay = true }) => {
       : 0;
 
   const trackTranslateX = baseTranslateX + dragOffset;
+
+  // Map virtual activeIndex → real item index (for dots)
+  const realActiveIndex = ((activeIndex % count) + count) % count;
 
   return (
     <div className="movie-3d-carousel">
@@ -255,16 +263,26 @@ const MovieCarousel3D = ({ items, autoplay = true }) => {
             className="movie-3d-carousel__track"
             style={{
               transform: `translateX(${trackTranslateX}px)`,
-              transition: isDragging
-                ? "none"
-                : `transform ${TRANSITION_MS}ms cubic-bezier(0.4, 0, 0.2, 1)`,
+              transition:
+                isDragging || isSnapping
+                  ? "none"
+                  : `transform ${TRANSITION_MS}ms cubic-bezier(0.4, 0, 0.2, 1)`,
             }}
           >
-            {items.map((item, index) => {
-              const offset = circularOffset(index, activeIndex, count);
+            {extendedItems.map((item, index) => {
+              const offset = index - activeIndex;
+              // Skip rendering cards that are too far away (keep their slot for layout)
+              if (Math.abs(offset) > 3) {
+                return (
+                  <div
+                    key={`${item.id}-${index}`}
+                    className="movie-3d-carousel__slot"
+                  />
+                );
+              }
               return (
                 <MovieCard
-                  key={item.id}
+                  key={`${item.id}-${index}`}
                   item={item}
                   offset={offset}
                   isActive={offset === 0}
@@ -277,18 +295,25 @@ const MovieCarousel3D = ({ items, autoplay = true }) => {
         </div>
       </div>
 
-      <div className="movie-3d-carousel__dots" role="tablist" aria-label="Workshops">
+      <div
+        className="movie-3d-carousel__dots"
+        role="tablist"
+        aria-label="Workshops"
+      >
         {items.map((item, index) => (
           <button
             key={item.id}
             type="button"
             role="tab"
-            aria-selected={index === activeIndex}
+            aria-selected={index === realActiveIndex}
             aria-label={`Go to ${item.title}`}
             className={`movie-3d-carousel__dot${
-              index === activeIndex ? " movie-3d-carousel__dot--active" : ""
+              index === realActiveIndex ? " movie-3d-carousel__dot--active" : ""
             }`}
-            onClick={() => goTo(index)}
+            onClick={() => {
+              // Jump to the equivalent position in the middle copy
+              goTo(count + index);
+            }}
           />
         ))}
       </div>

@@ -7,27 +7,12 @@
   width: 100%;
   max-width: 100%;
   padding: 28px 16px 36px;
-  background: #050508;
-  border-radius: 20px;
   overflow: hidden;
   box-sizing: border-box;
 }
 
 .movie-3d-carousel__glow {
-  position: absolute;
-  left: 50%;
-  top: 42%;
-  transform: translate(-50%, -50%);
-  width: min(640px, 85%);
-  height: min(480px, 70%);
-  background: radial-gradient(
-    ellipse at center,
-    rgba(206, 32, 39, 0.45) 0%,
-    rgba(206, 32, 39, 0.15) 35%,
-    transparent 68%
-  );
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 
 .movie-3d-carousel__viewport {
@@ -101,8 +86,8 @@
 
 .movie-3d-card__poster {
   position: relative;
-  aspect-ratio: 2 / 3;
-  max-height: min(420px, 52vh);
+  width: 100%;
+  height: clamp(300px, 52vh, 420px);
   overflow: hidden;
 }
 
@@ -235,11 +220,19 @@
   filter: brightness(0.55);
 }
 
-.movie-3d-card[data-offset="-2"],
-.movie-3d-card[data-offset="2"] {
+.movie-3d-card[data-offset="-2"] {
   transform: scale(0.62) rotateY(22deg) translateZ(-80px);
-  opacity: 0.35;
+  opacity: 0;
   z-index: 10;
+  pointer-events: none;
+  filter: brightness(0.35);
+}
+
+.movie-3d-card[data-offset="2"] {
+  transform: scale(0.62) rotateY(-22deg) translateZ(-80px);
+  opacity: 0;
+  z-index: 10;
+  pointer-events: none;
   filter: brightness(0.35);
 }
 
@@ -307,12 +300,6 @@
   .movie-3d-carousel {
     padding: 24px 12px 32px;
   }
-
-  .movie-3d-card[data-offset="-2"],
-  .movie-3d-card[data-offset="2"] {
-    opacity: 0;
-    pointer-events: none;
-  }
 }
 
 @media (max-width: 767px) {
@@ -322,7 +309,7 @@
   }
 
   .movie-3d-card__poster {
-    max-height: min(380px, 48vh);
+    height: clamp(260px, 48vh, 380px);
   }
 
   .movie-3d-card[data-offset="-1"] {

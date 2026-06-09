@@ -1241,6 +1241,11 @@
   background: #fff;
 }
 
+/* Prevent react-slick clone slides bleeding outside work section */
+.astra-site .tf__work {
+  overflow-x: hidden;
+}
+
 /* Testimonials — light theme */
 .astra-site .tf___testimonial {
   background: linear-gradient(180deg, #f4f7fc 0%, #ffffff 100%) !important;

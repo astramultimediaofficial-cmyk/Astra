@@ -8,10 +8,6 @@ const ENROLL_URL =
 const HERO_VIDEO_SRC = "/videos/hero-animation.mp4";
 
 const HomeHero = () => {
-  const scrollToContent = () => {
-    document.getElementById("home-content")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section className="home-hero home-hero--video">
       <div className="home-hero__media" aria-hidden>
@@ -73,42 +69,6 @@ const HomeHero = () => {
             </div>
           </div>
         </div>
-
-        <footer className="home-hero__bar home-hero__bar--on-video">
-          <p className="home-hero__copyright">
-            © {new Date().getFullYear()} Astra Multimedia. All rights reserved.
-          </p>
-          <button
-            type="button"
-            className="home-hero__scroll"
-            onClick={scrollToContent}
-            aria-label="Scroll to content"
-          >
-            <span />
-          </button>
-          <ul className="home-hero__social">
-            <li>
-              <a href="#" aria-label="Facebook">
-                FB
-              </a>
-            </li>
-            <li>
-              <a href="#" aria-label="Instagram">
-                IN
-              </a>
-            </li>
-            <li>
-              <a href="#" aria-label="Twitter">
-                TW
-              </a>
-            </li>
-            <li>
-              <a href="#" aria-label="LinkedIn">
-                LI
-              </a>
-            </li>
-          </ul>
-        </footer>
       </div>
       <div className="home-hero__fade" aria-hidden />
     </section>
