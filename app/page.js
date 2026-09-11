@@ -1,32 +1,12 @@
-import CategorySection from "@/component/category/CategorySection";
-import EventSection from "@/component/event/EventSection";
-import FooterSection from "@/component/footer/FooterSection";
-import HomeHero from "@/component/home/HomeHero";
-import HomeNavbar from "@/component/home/HomeNavbar";
-import VideoModal from "@/component/modal/VideoModal";
-import TestimonialSection from "@/component/testimonial/TestimonialSection";
-import ScrollToTopButton from "@/component/utils/ScrollToTopButton";
-import WorkSection from "@/component/work/WorkSection";
+import AstraLandingPage from "@/component/landing/AstraLandingPage";
+import "@/public/css/astra-landing.css";
 
 export const metadata = {
-  title: "Astra Multimedia | Home",
-  description: "Excellence in digital education from the experts.",
+  title: "Astra Institute of Multimedia — Upgrade Your Skills. Build Your Career.",
+  description:
+    "Coimbatore's industry-oriented training hub for UI/UX, Graphic Design, Animation, VFX, Video Editing, Digital Marketing and more — with AI-powered tools and 100% placement support.",
 };
 
 export default function Home() {
-  return (
-    <div className="home-premium astra-site">
-      <HomeNavbar logo="images/logo.png" />
-      <HomeHero />
-      <div id="home-content" className="home-premium__content">
-        <CategorySection />
-        <EventSection section="tf__event mt_95" startIndex={0} endIndex={4} />
-        <WorkSection />
-        <TestimonialSection />
-        <FooterSection />
-      </div>
-      <VideoModal />
-      <ScrollToTopButton style="" />
-    </div>
-  );
+  return <AstraLandingPage />;
 }
