@@ -195,7 +195,7 @@ export function FaqSection({ limit }) {
       <div className="as-wrap as-faq-layout">
         <div className="as-reveal">
           <div className="as-eyebrow">FAQ</div>
-          <h2 style={{ fontSize: "clamp(34px, 4.6vw, 56px)" }}>Frequently asked questions.</h2>
+          <h2 style={{ fontSize: "clamp(30px, 3.8vw, 46px)" }}>Frequently asked questions.</h2>
           <p style={{ marginTop: 18, fontSize: 17, color: "var(--graphite)", maxWidth: "40ch" }}>
             Everything you need to know about our courses, certifications, and how we help you
             launch your professional career.

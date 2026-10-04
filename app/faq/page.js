@@ -27,7 +27,7 @@ export default function Faq() {
         <div className="as-wrap as-faq-layout">
           <div className="as-reveal">
             <div className="as-eyebrow">Still curious?</div>
-            <h2 style={{ fontSize: "clamp(30px, 4vw, 46px)" }}>Talk to a real person.</h2>
+            <h2 style={{ fontSize: "clamp(26px, 3.2vw, 38px)" }}>Talk to a real person.</h2>
             <p style={{ marginTop: 16, fontSize: 17, color: "var(--graphite)", maxWidth: "40ch" }}>
               Our admissions team is happy to walk you through courses, schedules and fees.
             </p>
