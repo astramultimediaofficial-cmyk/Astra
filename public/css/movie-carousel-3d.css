@@ -1,0 +1,336 @@
+/* ==========================================================================
+   3D center-focus movie carousel (layout utilities + 3D transforms)
+   ========================================================================== */
+
+.movie-3d-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  padding: 28px 16px 36px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.movie-3d-carousel__glow {
+  display: none;
+}
+
+.movie-3d-carousel__viewport {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  overflow: hidden;
+  min-height: 0;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.movie-3d-carousel__viewport--dragging {
+  cursor: grabbing;
+}
+
+.movie-3d-carousel__viewport--dragging .movie-3d-card__link {
+  pointer-events: none;
+}
+
+.movie-3d-carousel__perspective {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.movie-3d-carousel__track {
+  display: flex;
+  align-items: center;
+  will-change: transform;
+  transform-style: preserve-3d;
+  padding: 4px 0 8px;
+}
+
+.movie-3d-carousel__slot {
+  flex-shrink: 0;
+  width: var(--movie-card-width, 268px);
+  margin-right: var(--movie-card-gap, 18px);
+  transform-style: preserve-3d;
+}
+
+/* --- Card --- */
+.movie-3d-card {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #0a0a0f;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.movie-3d-card__link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+.movie-3d-card--active .movie-3d-card__link {
+  pointer-events: auto;
+}
+
+.movie-3d-card__poster {
+  position: relative;
+  width: 100%;
+  height: clamp(300px, 52vh, 420px);
+  overflow: hidden;
+}
+
+.movie-3d-card__poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.movie-3d-card__dim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0.05) 40%,
+    rgba(0, 0, 0, 0.55) 78%,
+    rgba(0, 0, 0, 0.92) 100%
+  );
+  pointer-events: none;
+  transition: background 0.5s ease;
+}
+
+.movie-3d-card__platform {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 6px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.movie-3d-card__platform--astra {
+  background: rgba(69, 130, 255, 0.9);
+  border-color: transparent;
+}
+
+.movie-3d-card__platform--prime {
+  background: rgba(0, 168, 225, 0.9);
+  border-color: transparent;
+}
+
+.movie-3d-card__platform--learn {
+  background: rgba(26, 182, 157, 0.9);
+  border-color: transparent;
+}
+
+.movie-3d-card__platform--studio,
+.movie-3d-card__platform--live {
+  background: rgba(206, 32, 39, 0.92);
+  border-color: transparent;
+}
+
+.movie-3d-card__rating {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.movie-3d-card__rating svg {
+  color: #f5c518;
+}
+
+.movie-3d-card__title {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 18px;
+  z-index: 2;
+  margin: 0;
+  font-family: var(--headingFont, system-ui, sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Offset transforms — 3D fan */
+.movie-3d-card[data-offset="0"] {
+  transform: scale(1) rotateY(0deg) translateZ(0);
+  opacity: 1;
+  z-index: 30;
+  filter: none;
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.65),
+    0 0 60px rgba(206, 32, 39, 0.25);
+}
+
+.movie-3d-card--active {
+  cursor: default;
+}
+
+.movie-3d-card[data-offset="-1"] {
+  transform: scale(0.78) rotateY(15deg) translateZ(-40px);
+  opacity: 0.72;
+  z-index: 20;
+  filter: brightness(0.55);
+}
+
+.movie-3d-card[data-offset="1"] {
+  transform: scale(0.78) rotateY(-15deg) translateZ(-40px);
+  opacity: 0.72;
+  z-index: 20;
+  filter: brightness(0.55);
+}
+
+.movie-3d-card[data-offset="-2"] {
+  transform: scale(0.62) rotateY(22deg) translateZ(-80px);
+  opacity: 0;
+  z-index: 10;
+  pointer-events: none;
+  filter: brightness(0.35);
+}
+
+.movie-3d-card[data-offset="2"] {
+  transform: scale(0.62) rotateY(-22deg) translateZ(-80px);
+  opacity: 0;
+  z-index: 10;
+  pointer-events: none;
+  filter: brightness(0.35);
+}
+
+.movie-3d-card[data-offset="-1"] .movie-3d-card__dim,
+.movie-3d-card[data-offset="1"] .movie-3d-card__dim,
+.movie-3d-card[data-offset="-2"] .movie-3d-card__dim,
+.movie-3d-card[data-offset="2"] .movie-3d-card__dim {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+}
+
+/* Dots */
+.movie-3d-carousel__dots {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.movie-3d-carousel__dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition:
+    width 0.3s ease,
+    background 0.3s ease;
+}
+
+.movie-3d-carousel__dot--active {
+  width: 28px;
+  background: #ce2027;
+}
+
+/* Section wrapper */
+.event-section--movie-3d {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 48px;
+  background: linear-gradient(180deg, #f4f7fc 0%, #e8edf5 100%);
+}
+
+.event-section--movie-3d .tf__heading_area h5 {
+  color: var(--hero-eyebrow, #4582ff) !important;
+}
+
+.event-section--movie-3d .tf__heading_area h2 {
+  color: var(--hero-heading, #0f2239) !important;
+}
+
+.event-section--movie-3d__heading {
+  text-align: center;
+  margin-bottom: 8px !important;
+}
+
+@media (max-width: 991px) {
+  .movie-3d-carousel {
+    padding: 24px 12px 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .movie-3d-carousel {
+    padding: 20px 8px 28px;
+    border-radius: 16px;
+  }
+
+  .movie-3d-card__poster {
+    height: clamp(260px, 48vh, 380px);
+  }
+
+  .movie-3d-card[data-offset="-1"] {
+    transform: scale(0.82) rotateY(12deg) translateZ(-30px);
+  }
+
+  .movie-3d-card[data-offset="1"] {
+    transform: scale(0.82) rotateY(-12deg) translateZ(-30px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .movie-3d-carousel__track,
+  .movie-3d-card {
+    transition: none !important;
+  }
+
+  .movie-3d-card[data-offset="-1"],
+  .movie-3d-card[data-offset="1"] {
+    transform: scale(0.9);
+    opacity: 0.8;
+    filter: brightness(0.7);
+  }
+}
