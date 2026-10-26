@@ -20,7 +20,7 @@ export const metadata = {
 };
 
 export default function Home() {
-  const marquee = [...courses.map((c) => c.title), "Flexible Timing", "Workshops", "Placement Support"];
+  const marquee = courses.slice(0, 5).map((c) => c.title);
 
   return (
     <SiteShell>
@@ -113,25 +113,12 @@ export default function Home() {
 
       <div className="as-stats">
         <div className="as-wrap">
-          {stats.map((s) =>
-            s.href ? (
-              <a
-                className="as-stat as-stat--link"
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="as-num">{s.num}</div>
-                <div className="as-lbl">{s.label}</div>
-              </a>
-            ) : (
-              <div className="as-stat" key={s.label}>
-                <div className="as-num">{s.num}</div>
-                <div className="as-lbl">{s.label}</div>
-              </div>
-            )
-          )}
+          {stats.map((s) => (
+            <div className="as-stat" key={s.label}>
+              <div className="as-num">{s.num}</div>
+              <div className="as-lbl">{s.label}</div>
+            </div>
+          ))}
         </div>
       </div>
 

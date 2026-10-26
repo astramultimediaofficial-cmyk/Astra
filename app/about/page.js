@@ -32,25 +32,12 @@ export default function About() {
 
       <div className="as-stats">
         <div className="as-wrap">
-          {stats.map((s) =>
-            s.href ? (
-              <a
-                className="as-stat as-stat--link"
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="as-num">{s.num}</div>
-                <div className="as-lbl">{s.label}</div>
-              </a>
-            ) : (
-              <div className="as-stat" key={s.label}>
-                <div className="as-num">{s.num}</div>
-                <div className="as-lbl">{s.label}</div>
-              </div>
-            )
-          )}
+          {stats.map((s) => (
+            <div className="as-stat" key={s.label}>
+              <div className="as-num">{s.num}</div>
+              <div className="as-lbl">{s.label}</div>
+            </div>
+          ))}
         </div>
       </div>
 

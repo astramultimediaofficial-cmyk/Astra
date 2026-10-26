@@ -724,19 +724,19 @@ html:has(.as-site) {
 .as-marquee-item {
   display: inline-flex;
   align-items: center;
-  gap: 28px;
-  padding: 18px 28px 18px 0;
+  gap: 16px;
+  padding: 8px 18px 8px 0;
   font-family: var(--display);
-  font-size: 20px;
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   white-space: nowrap;
 }
 
 .as-marquee-item::after {
   content: "✦";
-  font-size: 16px;
+  font-size: 10px;
   color: var(--gold);
 }
 
@@ -768,20 +768,6 @@ html:has(.as-site) {
   padding: 40px 16px;
   text-align: center;
   border-right: 1px solid var(--line);
-}
-
-a.as-stat--link {
-  color: inherit;
-  text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-a.as-stat--link:hover {
-  background: rgba(227, 30, 43, 0.12);
-}
-
-a.as-stat--link:hover .as-num {
-  color: var(--gold);
 }
 
 .as-stat:nth-child(2n) {
@@ -2570,22 +2556,36 @@ a.as-stat--link:hover .as-num {
   color: var(--graphite);
 }
 
-/* ---------- Floating WhatsApp ---------- */
-.as-float {
+/* ---------- Floating social buttons ---------- */
+.as-float-stack {
   position: fixed;
   right: 22px;
   bottom: 22px;
   z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.as-float {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  background: #25d366;
   color: #fff;
-  box-shadow: 0 16px 36px -12px rgba(37, 211, 102, 0.7);
   transition: transform 0.3s var(--ease);
+}
+
+.as-float--wa {
+  background: #25d366;
+  box-shadow: 0 16px 36px -12px rgba(37, 211, 102, 0.7);
+}
+
+.as-float--ig {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  box-shadow: 0 16px 36px -12px rgba(214, 36, 159, 0.55);
 }
 
 .as-site .as-float:hover {

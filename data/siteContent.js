@@ -29,11 +29,7 @@ export const stats = [
   { num: "1000+", label: "Learners trained" },
   { num: "9", label: "Career courses" },
   { num: "4", label: "Flexible tracks" },
-  {
-    num: "IG",
-    label: "Follow on Instagram",
-    href: "https://www.instagram.com/astramultimedia/",
-  },
+  { num: "100%", label: "Placement support" },
 ];
 
 export const durations = ["1 Month", "3 Months", "6 Months", "1 Year"];
