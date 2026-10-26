@@ -7,7 +7,7 @@ import { mentors } from "@/data/siteContent";
 export const metadata = {
   title: "Mentors | Astra Multimedia",
   description:
-    "Learn from experienced industry professionals — meet the Astra Multimedia mentors for UI/UX, Digital Marketing, SAP, Animation and VFX.",
+    "Meet Astra Multimedia mentors — Sujendran, Kavidharshini, Monisha, Suvi Arasu and Dharsini — guiding design, marketing, media, development and SAP.",
 };
 
 export default function Team() {

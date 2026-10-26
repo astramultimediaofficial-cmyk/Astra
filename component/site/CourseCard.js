@@ -12,7 +12,7 @@ export default function CourseCard({ course, delay = 0, reveal = true }) {
       <p>{course.description}</p>
       <div className="as-course-meta">
         <span>
-          {course.students} students · {course.level}
+          Flexible timing · {course.students} students · {course.level}
         </span>
         <span className="as-course-go" aria-hidden="true">
           →

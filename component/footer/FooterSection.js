@@ -78,7 +78,7 @@ const FooterSection = () => {
                   Post, Hope College, Coimbatore, Tamil Nadu 641004
                 </p>
                 <p>
-                  <span>Phone: 096002 92830</span>
+                  <span>Phone: 093446 06913</span>
                 </p>
                 <p>
                   <span>Email: astramultimediaofficial@gmail.com</span>

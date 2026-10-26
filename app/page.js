@@ -16,11 +16,11 @@ import { aboutPoints, courses, stats } from "@/data/siteContent";
 export const metadata = {
   title: "Astra Multimedia — Upgrade Your Skills. Build Your Career.",
   description:
-    "Coimbatore's industry-oriented training hub for Graphic Design, 2D/3D Animation, VFX, Video Editing, UI/UX and Digital Marketing — with live mentoring and 100% placement support.",
+    "Coimbatore's industry-oriented training hub for Graphic Design, UI/UX, Digital Marketing, Photography, Video Editing, SAP, Full Stack, App Development and 2D/3D Animation — with flexible timing and live mentoring.",
 };
 
 export default function Home() {
-  const marquee = [...courses.map((c) => c.title), "SAP", "Workshops", "Placement Support"];
+  const marquee = [...courses.map((c) => c.title), "Flexible Timing", "Workshops", "Placement Support"];
 
   return (
     <SiteShell>
@@ -38,7 +38,7 @@ export default function Home() {
             </h1>
             <p className="as-hero-lead">
               Join a community dedicated to academic excellence and personal growth. Industry-oriented
-              training in Graphic Design, Animation, VFX, Video Editing, UI/UX and Digital Marketing —
+              training in design, marketing, media, development and animation — with flexible timing,
               built to unlock your full potential.
             </p>
             <div className="as-hero-ctas">
@@ -113,12 +113,25 @@ export default function Home() {
 
       <div className="as-stats">
         <div className="as-wrap">
-          {stats.map((s) => (
-            <div className="as-stat" key={s.label}>
-              <div className="as-num">{s.num}</div>
-              <div className="as-lbl">{s.label}</div>
-            </div>
-          ))}
+          {stats.map((s) =>
+            s.href ? (
+              <a
+                className="as-stat as-stat--link"
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="as-num">{s.num}</div>
+                <div className="as-lbl">{s.label}</div>
+              </a>
+            ) : (
+              <div className="as-stat" key={s.label}>
+                <div className="as-num">{s.num}</div>
+                <div className="as-lbl">{s.label}</div>
+              </div>
+            )
+          )}
         </div>
       </div>
 
@@ -194,7 +207,7 @@ export default function Home() {
             <div className="as-eyebrow">Curriculum</div>
             <h2>What you&apos;ll master.</h2>
             <p>
-              Six industry-oriented programs, each stacked with core modules, real tools and
+              Nine industry-oriented programs, each with flexible timing, core modules, real tools and
               AI-powered workflows. Pick a course to see what&apos;s inside.
             </p>
           </div>

@@ -17,6 +17,17 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
+export const metadata = {
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/images/favicon.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/images/favicon.png",
+  },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={poppins.variable}>

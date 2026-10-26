@@ -38,6 +38,15 @@ export default function Contact() {
             </a>
             <a
               className="as-contact-card as-reveal as-reveal-d2"
+              href={contact.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="as-mono">Instagram</span>
+              <strong>{contact.instagramHandle}</strong>
+            </a>
+            <a
+              className="as-contact-card as-reveal as-reveal-d3"
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.mapQuery)}`}
               target="_blank"
               rel="noopener noreferrer"

@@ -44,6 +44,9 @@ export default function SiteFooter() {
             <div className="as-footer-contact">
               <a href={contact.phoneHref}>{contact.phoneDisplay}</a>
               <a href={`mailto:${contact.email}`}>{contact.email}</a>
+              <a href={contact.instagram} target="_blank" rel="noopener noreferrer">
+                {contact.instagramHandle}
+              </a>
               <address style={{ fontStyle: "normal" }}>
                 {contact.addressLines.map((line) => (
                   <span key={line} style={{ display: "block" }}>

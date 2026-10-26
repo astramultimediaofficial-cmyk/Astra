@@ -84,7 +84,7 @@ const CourseDetailTabContent = ({ courseData }) => {
               <div className="col-xl-7 col-md-6">
                 <div className="tf__course_instructor_text">
                   <h4>{courseData.instructor}</h4>
-                  <p>096002 92830</p>
+                  <p>093446 06913</p>
                   <p>astramultimediaofficial@gmail.com</p>
                   <p>
                     <span>

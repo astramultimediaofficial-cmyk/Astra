@@ -27,7 +27,7 @@ const ContactPageSection = () => {
                 </div>
                 <div className="text">
                   <h3>Call</h3>
-                  <a href="tel:09600292830">096002 92830</a>
+                  <a href="tel:+919344606913">093446 06913</a>
                 </div>
               </div>
               <div className="tf__contact_single">

@@ -32,12 +32,25 @@ export default function About() {
 
       <div className="as-stats">
         <div className="as-wrap">
-          {stats.map((s) => (
-            <div className="as-stat" key={s.label}>
-              <div className="as-num">{s.num}</div>
-              <div className="as-lbl">{s.label}</div>
-            </div>
-          ))}
+          {stats.map((s) =>
+            s.href ? (
+              <a
+                className="as-stat as-stat--link"
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="as-num">{s.num}</div>
+                <div className="as-lbl">{s.label}</div>
+              </a>
+            ) : (
+              <div className="as-stat" key={s.label}>
+                <div className="as-num">{s.num}</div>
+                <div className="as-lbl">{s.label}</div>
+              </div>
+            )
+          )}
         </div>
       </div>
 
@@ -66,10 +79,10 @@ export default function About() {
             <p>
               As a premier professional training center, we offer industry-oriented training in{" "}
               <strong>
-                UI/UX Design, Graphic Design, Web Development, 2D/3D Animation, VFX, Video Editing,
-                SAP, DSA and Digital Marketing
+                Graphic Design, UI/UX Design, Digital Marketing, Photography / Videography, Video Editing,
+                SAP, Full Stack Development, App Development, and 2D/3D Animation
               </strong>{" "}
-              — taught with licensed, AI-powered tools.
+              — taught with licensed, AI-powered tools and flexible timing.
             </p>
             <ul className="as-checks">
               {aboutPoints.map((point) => (

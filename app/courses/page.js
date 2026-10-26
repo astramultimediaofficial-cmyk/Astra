@@ -8,7 +8,7 @@ import { durations } from "@/data/siteContent";
 export const metadata = {
   title: "Our Courses | Astra Multimedia",
   description:
-    "Hands-on programs in Graphic Design, 2D & 3D Animation, VFX, Video Editing, Digital Marketing and UI/UX Design, aligned with industry expectations.",
+    "Hands-on programs in Graphic Design, UI/UX, Digital Marketing, Photography, Video Editing, SAP, Full Stack, App Development and 2D/3D Animation — all with flexible timing.",
 };
 
 export default function Courses() {
@@ -22,7 +22,7 @@ export default function Courses() {
             Hands-on programs aligned with <span className="as-accent-red">industry.</span>
           </>
         }
-        lead="Six career courses taught by Astra Faculty — from beginner foundations to portfolio-ready projects. Fees vary by track; contact us for details."
+        lead="Nine career courses with flexible timing — from beginner foundations to portfolio-ready projects. Fees vary by track; contact us for details."
       >
         <div className="as-page-hero-row">
           {durations.map((d) => (

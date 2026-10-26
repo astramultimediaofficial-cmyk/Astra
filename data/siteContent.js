@@ -1,8 +1,10 @@
 export const contact = {
-  phoneDisplay: "096002 92830",
-  phoneHref: "tel:+919600292830",
-  whatsappNumber: "919600292830",
+  phoneDisplay: "093446 06913",
+  phoneHref: "tel:+919344606913",
+  whatsappNumber: "919344606913",
   email: "astramultimediaofficial@gmail.com",
+  instagram: "https://www.instagram.com/astramultimedia/",
+  instagramHandle: "@astramultimedia",
   address:
     "Third floor, 2, Sarkarayar St, BR Puram, Peelamedu Post, Hope College, Coimbatore, Tamil Nadu 641004",
   addressLines: [
@@ -25,9 +27,13 @@ export const navLinks = [
 
 export const stats = [
   { num: "1000+", label: "Learners trained" },
-  { num: "6", label: "Career courses" },
+  { num: "9", label: "Career courses" },
   { num: "4", label: "Flexible tracks" },
-  { num: "100%", label: "Placement support" },
+  {
+    num: "IG",
+    label: "Follow on Instagram",
+    href: "https://www.instagram.com/astramultimedia/",
+  },
 ];
 
 export const durations = ["1 Month", "3 Months", "6 Months", "1 Year"];
@@ -64,15 +70,18 @@ export const programPerks = [
   "Live Mentoring",
   "Recording Available",
   "Study Material Provided",
+  "Flexible Timing",
 ];
 
 export const aboutPoints = [
   "Dedicated career mentorship and support.",
-  "Flexible learning modes.",
+  "Flexible learning modes and flexible timing.",
   "Hands-on project-based learning.",
   "Industry-relevant course curriculum.",
   "Comprehensive portfolio development.",
 ];
+
+const flexibleTiming = "Flexible timing";
 
 export const courses = [
   {
@@ -85,7 +94,7 @@ export const courses = [
     reviews: 95,
     tag: "Learn creative visual design, branding, and digital content creation.",
     description:
-      "Master visual communication, typography, layout, and branding fundamentals.",
+      "Master visual communication, typography, layout, and branding fundamentals — with flexible timing.",
     overview: [
       "Graphic Design at Astra Multimedia covers visual communication, composition, typography, and practical branding projects.",
       "Students learn industry workflows in design software and build portfolio-ready creatives for print and digital platforms.",
@@ -97,6 +106,7 @@ export const courses = [
       "Portfolio projects with mentor feedback",
     ],
     features: [
+      flexibleTiming,
       "Beginner to advanced structure",
       "Project-based assignments",
       "Portfolio development support",
@@ -112,116 +122,45 @@ export const courses = [
     careers: ["Graphic Designer", "Brand Designer", "Freelancer", "Social Media Designer", "Entrepreneur"],
   },
   {
-    slug: "2d-3d-animation",
+    slug: "ui-ux-design",
     num: "02",
-    title: "2D & 3D Animation",
-    category: "Animation",
-    level: "Project Based",
-    students: "120+",
-    reviews: 88,
-    tag: "Create animations for films, ads, and digital media.",
+    title: "UI/UX Design",
+    category: "Design",
+    level: "Portfolio Projects",
+    students: "85+",
+    reviews: 82,
+    tag: "Turn your creativity into high-paying digital skills.",
     description:
-      "Bring characters and worlds to life using industry-standard pipelines.",
+      "Design intuitive digital products through user research and prototyping — with flexible timing.",
     overview: [
-      "This course introduces core 2D and 3D animation techniques used in studios and production houses.",
-      "Learners work on character movement, scene setup, and storytelling through animation projects.",
+      "UI/UX Design focuses on user-centered product creation, from problem understanding to prototype validation.",
+      "Students build end-to-end case studies suitable for product, startup, and agency opportunities.",
     ],
     learn: [
-      "Animation principles and timing",
-      "Character rigging fundamentals",
-      "Scene creation and motion workflow",
-      "Short animated project creation",
+      "User research and persona building",
+      "Wireframing and interaction design",
+      "High-fidelity UI systems",
+      "Prototype testing and iteration",
     ],
     features: [
-      "Studio-style practical learning",
-      "Mentor-guided project reviews",
-      "Pipeline-oriented training",
-      "Showreel-ready output",
+      flexibleTiming,
+      "Portfolio-first case study workflow",
+      "Real app/web UI exercises",
+      "Mentor-led critique sessions",
+      "Career-focused design guidance",
     ],
     modules: [
-      ["Core Modules", "Principles of Animation, Storyboarding, Character Design, Timing, Visual Storytelling"],
-      ["2D Animation", "Frame-by-Frame Animation, Motion Graphics, Explainer Videos, Typography Animation"],
-      ["3D Animation", "3D Modeling, Texturing, Lighting, Rigging, Rendering, Scene Creation"],
-      ["Tools & Software", "Blender, After Effects, Maya, AI Animation Tools"],
-      ["Advanced Topics", "Visual Effects Basics, Compositing, Camera Animation, Simulation, Short Film Creation"],
+      ["Core Modules", "UI Design Fundamentals, UX Principles, Design Thinking, Color Theory, Typography"],
+      ["UI Design", "Wireframing, Prototyping, Mobile App Design, Website Design, Design Systems"],
+      ["UX Design", "User Research, Personas, User Journey Mapping, Usability Testing, Interaction Design"],
+      ["Tools & Technology", "Figma, Adobe XD, Photoshop, Illustrator, HTML/CSS/JavaScript, AI Design Tools"],
+      ["Advanced Topics", "Micro Interactions, Accessibility Design, UX Strategy, Real-world Case Studies"],
     ],
-    careers: ["2D Animator", "3D Animator", "Motion Graphics Designer", "VFX Artist"],
-  },
-  {
-    slug: "vfx",
-    num: "03",
-    title: "VFX",
-    category: "Multimedia",
-    level: "Hands-on Training",
-    students: "90+",
-    reviews: 84,
-    tag: "Turn your creativity into cinematic visual effects.",
-    description:
-      "Learn compositing, simulations, and cinematic effects for modern media.",
-    overview: [
-      "The VFX course focuses on compositing, cleanup, and effects integration for film and digital media.",
-      "Students learn to combine footage, elements, and effects to produce polished visual outputs.",
-    ],
-    learn: [
-      "Compositing and keying workflows",
-      "Motion tracking and match move basics",
-      "Simulation and cinematic effect integration",
-      "Project-based shot finishing practice",
-    ],
-    features: [
-      "Hands-on production-style tasks",
-      "Real shot practice exercises",
-      "Step-by-step mentor support",
-      "Professional portfolio guidance",
-    ],
-    modules: [
-      ["Core Modules", "Compositing, Layers & Blending, Green Screen Editing, Masking & Keying, Motion Tracking"],
-      ["Editing & Techniques", "Rotoscoping, Object Removal, Clean Plate Creation, Scene Composition"],
-      ["Color & Finishing", "Color Correction, Color Grading, Cinematic Effects, Visual Enhancement"],
-      ["Tools & Technology", "Adobe After Effects, Premiere Pro, Nuke, VFX Plugins, AI Tools"],
-      ["Advanced Topics", "Camera Tracking, 3D Tracking, CGI Compositing, Lighting & Shadow Matching"],
-    ],
-    careers: ["VFX Artist", "Compositor", "Video Effects Editor", "Motion Graphics Artist"],
-  },
-  {
-    slug: "video-editing",
-    num: "04",
-    title: "Video Editing",
-    category: "Editing",
-    level: "Hands-on Training",
-    students: "95+",
-    reviews: 80,
-    tag: "Create engaging videos with industry-level skills.",
-    description:
-      "Create compelling visual stories through editing, transitions, and grading.",
-    overview: [
-      "Video Editing training helps students create engaging stories through pacing, transitions, and finishing quality.",
-      "The program covers editing workflows for ads, reels, and long-form content with practical assignments.",
-    ],
-    learn: [
-      "Timeline editing and sequence management",
-      "Audio sync, cleanup, and balancing",
-      "Color correction and grading basics",
-      "Export workflows for multiple platforms",
-    ],
-    features: [
-      "Hands-on post-production workflow",
-      "Assignment-driven practice",
-      "Mentor review and correction",
-      "Portfolio output for interviews",
-    ],
-    modules: [
-      ["Core Modules", "Timeline & Interface, Clip Arrangement, Cutting, Trimming, Transitions, Export Settings"],
-      ["Editing & Techniques", "Multi-layer Editing, Speed Ramping, Slow Motion, Jump Cuts, Match Cuts"],
-      ["Audio & Sound", "Background Music Sync, Sound Effects, Voice Over Editing, Noise Reduction, Mixing"],
-      ["Tools & Technology", "Adobe After Effects, Premiere Pro, Media Encoder, Plugins & Presets, AI Tools"],
-      ["Advanced Topics", "Motion Graphics Basics, Green Screen Editing, Multi-Camera Editing, Cinematic Effects"],
-    ],
-    careers: ["Video Editor", "Content Creator", "Film Editor", "Motion Graphics Editor"],
+    careers: ["UI Designer", "UX Designer", "Product Designer", "Freelancer"],
   },
   {
     slug: "digital-marketing",
-    num: "05",
+    num: "03",
     title: "Digital Marketing",
     category: "Marketing",
     level: "Real Campaign Training",
@@ -229,7 +168,7 @@ export const courses = [
     reviews: 90,
     tag: "Learn online marketing strategies to grow businesses digitally.",
     description:
-      "Master SEO, social media, paid ads, and conversion-focused marketing.",
+      "Master SEO, social media, paid ads, and conversion-focused marketing — with flexible timing.",
     overview: [
       "Digital Marketing Mastery teaches end-to-end growth strategy from awareness to conversion and retention.",
       "Learners practice with campaign planning, SEO fundamentals, and performance tracking concepts.",
@@ -241,6 +180,7 @@ export const courses = [
       "Funnel analysis and ROI tracking",
     ],
     features: [
+      flexibleTiming,
       "Real campaign simulation tasks",
       "Marketing strategy workshops",
       "Practical reporting templates",
@@ -256,83 +196,280 @@ export const courses = [
     careers: ["Digital Marketer", "SEO Specialist", "Freelancer"],
   },
   {
-    slug: "ui-ux-design",
-    num: "06",
-    title: "UI/UX Design",
-    category: "Design",
-    level: "Portfolio Projects",
-    students: "85+",
-    reviews: 82,
-    tag: "Turn your creativity into high-paying digital skills.",
+    slug: "photography-videography",
+    num: "04",
+    title: "Photography / Videography",
+    category: "Media",
+    level: "Hands-on Training",
+    students: "70+",
+    reviews: 78,
+    tag: "Capture stories through camera craft, lighting, and visual direction.",
     description:
-      "Design intuitive digital products through user research and prototyping.",
+      "Learn camera techniques, lighting, composition, and shoot workflows — with flexible timing.",
     overview: [
-      "UI/UX Design focuses on user-centered product creation, from problem understanding to prototype validation.",
-      "Students build end-to-end case studies suitable for product, startup, and agency opportunities.",
+      "Photography and Videography training builds practical shooting skills for portraits, products, events, and short-form video.",
+      "Students learn framing, lighting setups, and on-set workflows used in commercial and creative productions.",
     ],
     learn: [
-      "User research and persona building",
-      "Wireframing and interaction design",
-      "High-fidelity UI systems",
-      "Prototype testing and iteration",
+      "Camera settings and exposure control",
+      "Lighting for photo and video",
+      "Composition and visual storytelling",
+      "Shoot planning and client-ready delivery",
     ],
     features: [
-      "Portfolio-first case study workflow",
-      "Real app/web UI exercises",
-      "Mentor-led critique sessions",
-      "Career-focused design guidance",
+      flexibleTiming,
+      "Practical outdoor and studio shoots",
+      "Mentor-led review sessions",
+      "Portfolio and reel development",
+      "Career guidance for freelance work",
     ],
     modules: [
-      ["Core Modules", "UI Design Fundamentals, UX Principles, Design Thinking, Color Theory, Typography"],
-      ["UI Design", "Wireframing, Prototyping, Mobile App Design, Website Design, Design Systems"],
-      ["UX Design", "User Research, Personas, User Journey Mapping, Usability Testing, Interaction Design"],
-      ["Tools & Technology", "Figma, Adobe XD, Photoshop, Illustrator, HTML/CSS/JavaScript, AI Design Tools"],
-      ["Advanced Topics", "Micro Interactions, Accessibility Design, UX Strategy, Real-world Case Studies"],
+      ["Core Modules", "Camera Basics, Exposure Triangle, Lenses, Composition, Color & White Balance"],
+      ["Photography Skills", "Portrait, Product, Event & Lifestyle Photography, Lighting Setups"],
+      ["Videography Skills", "Camera Movement, Shot Lists, Interview Setup, B-roll, Short Film Basics"],
+      ["Post Production", "Photo Retouching, Color Grading, Basic Edit & Delivery Formats"],
+      ["Tools & Technology", "DSLR/Mirrorless Workflow, Lighting Kits, Lightroom, Premiere Pro, AI Tools"],
     ],
-    careers: ["UI Designer", "UX Designer", "Product Designer", "Freelancer"],
+    careers: ["Photographer", "Videographer", "Content Creator", "Freelancer"],
+  },
+  {
+    slug: "video-editing",
+    num: "05",
+    title: "Video Editing",
+    category: "Editing",
+    level: "Hands-on Training",
+    students: "95+",
+    reviews: 80,
+    tag: "Create engaging videos with industry-level skills.",
+    description:
+      "Create compelling visual stories through editing, transitions, and grading — with flexible timing.",
+    overview: [
+      "Video Editing training helps students create engaging stories through pacing, transitions, and finishing quality.",
+      "The program covers editing workflows for ads, reels, and long-form content with practical assignments.",
+    ],
+    learn: [
+      "Timeline editing and sequence management",
+      "Audio sync, cleanup, and balancing",
+      "Color correction and grading basics",
+      "Export workflows for multiple platforms",
+    ],
+    features: [
+      flexibleTiming,
+      "Hands-on post-production workflow",
+      "Assignment-driven practice",
+      "Mentor review and correction",
+      "Portfolio output for interviews",
+    ],
+    modules: [
+      ["Core Modules", "Timeline & Interface, Clip Arrangement, Cutting, Trimming, Transitions, Export Settings"],
+      ["Editing & Techniques", "Multi-layer Editing, Speed Ramping, Slow Motion, Jump Cuts, Match Cuts"],
+      ["Audio & Sound", "Background Music Sync, Sound Effects, Voice Over Editing, Noise Reduction, Mixing"],
+      ["Tools & Technology", "Adobe After Effects, Premiere Pro, Media Encoder, Plugins & Presets, AI Tools"],
+      ["Advanced Topics", "Motion Graphics Basics, Green Screen Editing, Multi-Camera Editing, Cinematic Effects"],
+    ],
+    careers: ["Video Editor", "Content Creator", "Film Editor", "Motion Graphics Editor"],
+  },
+  {
+    slug: "sap",
+    num: "06",
+    title: "SAP",
+    category: "Enterprise",
+    level: "Practical Enterprise Training",
+    students: "80+",
+    reviews: 76,
+    tag: "Build enterprise-ready SAP skills for real business workflows.",
+    description:
+      "Learn SAP navigation, core modules, and practical enterprise use cases — with flexible timing.",
+    overview: [
+      "The SAP program introduces learners to enterprise systems used across finance, logistics, and business operations.",
+      "Students practice navigation, data entry, reporting, and everyday process flows with mentor guidance.",
+    ],
+    learn: [
+      "SAP interface and navigation",
+      "Core business process flows",
+      "Data entry and document handling",
+      "Basic reporting and analysis",
+    ],
+    features: [
+      flexibleTiming,
+      "Enterprise workflow practice",
+      "Step-by-step mentor support",
+      "Interview-oriented prep",
+      "Career pathway guidance",
+    ],
+    modules: [
+      ["Core Modules", "SAP Overview, Navigation, Organizational Structure, Master Data Basics"],
+      ["Business Processes", "Sales, Purchase, Inventory, and Finance process introductions"],
+      ["Reporting", "Standard reports, filters, exports, and day-to-day analytics"],
+      ["Tools & Practice", "Hands-on system practice, transaction walkthroughs, documentation"],
+      ["Career Prep", "Resume framing, interview Q&A, role overview for freshers"],
+    ],
+    careers: ["SAP End User", "SAP Support Associate", "Business Process Executive"],
+  },
+  {
+    slug: "full-stack-development",
+    num: "07",
+    title: "Full Stack Development",
+    category: "Development",
+    level: "Project Based",
+    students: "90+",
+    reviews: 86,
+    tag: "Build complete web apps from frontend to backend.",
+    description:
+      "Learn frontend, backend, databases, and deployment for full-stack projects — with flexible timing.",
+    overview: [
+      "Full Stack Development covers modern web application building from UI to APIs and databases.",
+      "Learners complete practical projects that demonstrate end-to-end product thinking and coding skills.",
+    ],
+    learn: [
+      "HTML, CSS, and modern JavaScript",
+      "Frontend frameworks and responsive UI",
+      "Backend APIs and databases",
+      "Auth, deployment, and project delivery",
+    ],
+    features: [
+      flexibleTiming,
+      "End-to-end project building",
+      "Mentor code reviews",
+      "Portfolio-ready applications",
+      "Placement-focused guidance",
+    ],
+    modules: [
+      ["Frontend", "HTML, CSS, JavaScript, Responsive Design, React Basics"],
+      ["Backend", "Node.js, Express, REST APIs, Authentication Basics"],
+      ["Database", "SQL/NoSQL fundamentals, CRUD, data modeling"],
+      ["Tools & Workflow", "Git, debugging, Postman, hosting & deployment"],
+      ["Capstone", "Full-stack project, documentation, and demo presentation"],
+    ],
+    careers: ["Full Stack Developer", "Web Developer", "Junior Software Engineer", "Freelancer"],
+  },
+  {
+    slug: "app-development",
+    num: "08",
+    title: "App Development",
+    category: "Development",
+    level: "Hands-on Projects",
+    students: "75+",
+    reviews: 81,
+    tag: "Design and build mobile apps for real users.",
+    description:
+      "Create mobile applications with modern tools, UI patterns, and publish-ready flows — with flexible timing.",
+    overview: [
+      "App Development training focuses on building practical mobile experiences with clean UI and solid app structure.",
+      "Students work on screens, navigation, APIs, and project demos suitable for portfolios and freelancing.",
+    ],
+    learn: [
+      "Mobile UI patterns and navigation",
+      "App state and data handling",
+      "API integration basics",
+      "Testing, packaging, and demo delivery",
+    ],
+    features: [
+      flexibleTiming,
+      "Mobile-first project practice",
+      "Mentor-led critiques",
+      "Portfolio app building",
+      "Career mentorship sessions",
+    ],
+    modules: [
+      ["Core Modules", "App UI Fundamentals, Navigation, Components, Responsive Mobile Layouts"],
+      ["Development", "App logic, forms, lists, local storage, API calls"],
+      ["Design to Build", "Wireframes to screens, design systems, interaction polish"],
+      ["Tools & Technology", "Modern app frameworks, debugging tools, asset workflow"],
+      ["Launch Prep", "Testing checklist, store basics, portfolio presentation"],
+    ],
+    careers: ["App Developer", "Mobile Developer", "Product Builder", "Freelancer"],
+  },
+  {
+    slug: "2d-3d-animation",
+    num: "09",
+    title: "2D & 3D Animation",
+    category: "Animation",
+    level: "Project Based",
+    students: "120+",
+    reviews: 88,
+    tag: "Create animations for films, ads, and digital media.",
+    description:
+      "Bring characters and worlds to life using industry-standard pipelines — with flexible timing.",
+    overview: [
+      "This course introduces core 2D and 3D animation techniques used in studios and production houses.",
+      "Learners work on character movement, scene setup, and storytelling through animation projects.",
+    ],
+    learn: [
+      "Animation principles and timing",
+      "Character rigging fundamentals",
+      "Scene creation and motion workflow",
+      "Short animated project creation",
+    ],
+    features: [
+      flexibleTiming,
+      "Studio-style practical learning",
+      "Mentor-guided project reviews",
+      "Pipeline-oriented training",
+      "Showreel-ready output",
+    ],
+    modules: [
+      ["Core Modules", "Principles of Animation, Storyboarding, Character Design, Timing, Visual Storytelling"],
+      ["2D Animation", "Frame-by-Frame Animation, Motion Graphics, Explainer Videos, Typography Animation"],
+      ["3D Animation", "3D Modeling, Texturing, Lighting, Rigging, Rendering, Scene Creation"],
+      ["Tools & Software", "Blender, After Effects, Maya, AI Animation Tools"],
+      ["Advanced Topics", "Visual Effects Basics, Compositing, Camera Animation, Simulation, Short Film Creation"],
+    ],
+    careers: ["2D Animator", "3D Animator", "Motion Graphics Designer", "VFX Artist"],
+    faculty: "Creative Faculty Team",
   },
 ];
 
 export const mentors = [
   {
-    slug: "gowtham",
-    name: "Gowtham",
-    role: "UI/UX Mentor",
-    initials: "G",
-    about:
-      "Leads design-focused workshops and helps students build strong, user-centered product portfolios.",
-    focus: ["UI/UX Design", "Micro-interactions", "Portfolio reviews"],
-    courseSlugs: ["ui-ux-design"],
-  },
-  {
     slug: "sujendran",
     name: "Sujendran",
-    role: "Digital Marketing Mentor",
+    role: "Design & Marketing Mentor",
     initials: "S",
     about:
-      "Trains learners on campaign strategy, lead generation, and measurable growth marketing practices.",
-    focus: ["Campaign strategy", "Lead generation", "Growth marketing"],
-    courseSlugs: ["digital-marketing"],
+      "Mentors Graphic Design, UI/UX Design, and Digital Marketing — helping learners build strong portfolios and campaign-ready skills.",
+    focus: ["Graphic Design", "UI/UX Design", "Digital Marketing"],
+    courseSlugs: ["graphic-design", "ui-ux-design", "digital-marketing"],
   },
   {
-    slug: "dharshini",
-    name: "Dharshini",
+    slug: "kavidharshini",
+    name: "Kavidharshini",
+    role: "Development Mentor",
+    initials: "K",
+    about:
+      "Guides Full Stack and App Development learners through practical coding projects, reviews, and career-ready portfolios.",
+    focus: ["Full Stack Development", "App Development", "Project reviews"],
+    courseSlugs: ["full-stack-development", "app-development"],
+  },
+  {
+    slug: "monisha",
+    name: "Monisha T",
+    role: "Photography & Videography Mentor",
+    initials: "M",
+    about:
+      "Trains students on camera craft, lighting, composition, and shoot workflows for photo and video careers.",
+    focus: ["Photography", "Videography", "Visual storytelling"],
+    courseSlugs: ["photography-videography"],
+  },
+  {
+    slug: "suvi-arasu",
+    name: "Suvi Arasu",
+    role: "Video Editing Mentor",
+    initials: "SA",
+    about:
+      "Helps learners master editing timelines, storytelling, color, and export workflows for ads, reels, and long-form content.",
+    focus: ["Video Editing", "Post-production", "Portfolio reels"],
+    courseSlugs: ["video-editing"],
+  },
+  {
+    slug: "dharsini",
+    name: "Dharsini",
     role: "SAP Mentor",
     initials: "D",
     about:
       "Guides students through SAP navigation, workflows, and practical enterprise use cases.",
     focus: ["SAP navigation", "Enterprise workflows", "Reporting basics"],
-    courseSlugs: [],
-  },
-  {
-    slug: "creative-faculty-team",
-    name: "Creative Faculty Team",
-    role: "Animation & VFX Mentors",
-    initials: "CF",
-    about:
-      "Experienced mentors across Graphic Design, Animation, Video Editing, and Web Development.",
-    focus: ["Graphic Design", "2D/3D Animation", "VFX", "Video Editing"],
-    courseSlugs: ["graphic-design", "2d-3d-animation", "vfx", "video-editing"],
+    courseSlugs: ["sap"],
   },
 ];
 
@@ -347,8 +484,8 @@ export const workshops = [
     desc: "A deep dive into creating seamless user experiences with interactive components.",
     longDesc:
       "Learn how to design and animate micro-interactions that improve usability and delight users in real products.",
-    trainer: "Gowtham",
-    mentorSlug: "gowtham",
+    trainer: "Sujendran",
+    mentorSlug: "sujendran",
   },
   {
     slug: "digital-marketing-funnel-mastery",
@@ -373,8 +510,8 @@ export const workshops = [
     desc: "Get a practical introduction to SAP systems and everyday workflows.",
     longDesc:
       "Understand SAP interface navigation, core process flow, data entry, and basic reporting in one day.",
-    trainer: "Dharshini",
-    mentorSlug: "dharshini",
+    trainer: "Dharsini",
+    mentorSlug: "dharsini",
   },
   {
     slug: "creative-career-orientation",
@@ -387,7 +524,7 @@ export const workshops = [
     longDesc:
       "A focused orientation session to help learners choose the right specialization and plan a strong portfolio roadmap.",
     trainer: "Astra Academic Team",
-    mentorSlug: "creative-faculty-team",
+    mentorSlug: "sujendran",
   },
 ];
 
@@ -395,7 +532,7 @@ export const highlights = [
   {
     img: "/images/work_img_1.jpg",
     title: "Industry Portfolios Developed",
-    desc: "Our students build professional portfolios featuring real-world projects in UI/UX, VFX, and Graphic Design.",
+    desc: "Our students build professional portfolios featuring real-world projects in UI/UX, animation, and Graphic Design.",
   },
   {
     img: "/images/work_img_2.jpg",
@@ -441,7 +578,7 @@ export const testimonials = [
 export const faqs = [
   {
     q: "What are the prerequisites for joining a course?",
-    a: "Most of our foundation courses are beginner-friendly and require no prior experience. For advanced modules like VFX or SAP, a basic understanding of computer operations is helpful.",
+    a: "Most of our foundation courses are beginner-friendly and require no prior experience. For advanced modules like SAP or Full Stack, a basic understanding of computer operations is helpful.",
   },
   {
     q: "Do you provide job placement assistance?",
@@ -453,7 +590,7 @@ export const faqs = [
   },
   {
     q: "Can I attend workshops while working a full-time job?",
-    a: "Yes. We provide flexible options including weekend bootcamps and evening sessions for working professionals and students who want to upskill.",
+    a: "Yes. We provide flexible options including weekend bootcamps and evening sessions for working professionals and students who want to upskill. All courses include flexible timing.",
   },
   {
     q: "How long are the programs?",

@@ -23,6 +23,7 @@ export default function CourseDetails({ params }) {
   if (!course) notFound();
 
   const mentor = mentors.find((m) => m.courseSlugs.includes(course.slug));
+  const mentorName = mentor?.name || course.faculty || "Astra Faculty";
 
   return (
     <SiteShell>
@@ -123,7 +124,11 @@ export default function CourseDetails({ params }) {
               <ul className="as-aside-list">
                 <li>
                   <span>Instructor</span>
-                  <span>{mentor ? mentor.name : "Astra Faculty"}</span>
+                  <span>{mentorName}</span>
+                </li>
+                <li>
+                  <span>Timing</span>
+                  <span>Flexible timing</span>
                 </li>
                 <li>
                   <span>Category</span>
@@ -162,6 +167,8 @@ export default function CourseDetails({ params }) {
                 <p style={{ marginTop: 16 }}>
                   Mentored by <Link href={`/team/${mentor.slug}`}>{mentor.name}</Link>.
                 </p>
+              ) : course.faculty ? (
+                <p style={{ marginTop: 16 }}>Mentored by {course.faculty}.</p>
               ) : null}
             </div>
           </aside>

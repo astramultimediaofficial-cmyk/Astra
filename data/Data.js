@@ -783,7 +783,7 @@ const teamData = [
     slug: "gowtham",
     about:
       "Leads design-focused workshops and helps students build strong, user-centered product portfolios.",
-    phone: "096002 92830",
+    phone: "093446 06913",
   },
   {
     id: 1,
@@ -793,7 +793,7 @@ const teamData = [
     slug: "sujendran",
     about:
       "Trains learners on campaign strategy, lead generation, and measurable growth marketing practices.",
-    phone: "096002 92830",
+    phone: "093446 06913",
   },
   {
     id: 2,
@@ -803,7 +803,7 @@ const teamData = [
     slug: "dharshini",
     about:
       "Guides students through SAP navigation, workflows, and practical enterprise use cases.",
-    phone: "096002 92830",
+    phone: "093446 06913",
   },
   {
     id: 3,
@@ -813,7 +813,7 @@ const teamData = [
     slug: "creative-faculty-team",
     about:
       "Experienced mentors across Graphic Design, Animation, Video Editing, and Web Development.",
-    phone: "096002 92830",
+    phone: "093446 06913",
   },
 ];
 
